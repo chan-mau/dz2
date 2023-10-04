@@ -1,0 +1,108 @@
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Main.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">org.example</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">Contact {</span>
+    <span class="s0">private </span><span class="s1">String firstName</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">String lastName</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">String phoneNumber</span><span class="s0">;</span>
+
+    <span class="s0">public </span><span class="s1">Contact(String firstName</span><span class="s0">, </span><span class="s1">String lastName</span><span class="s0">, </span><span class="s1">String phoneNumber) {</span>
+        <span class="s0">this</span><span class="s1">.firstName = firstName</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.lastName = lastName</span><span class="s0">;</span>
+        <span class="s0">this</span><span class="s1">.phoneNumber = phoneNumber</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+    <span class="s0">import </span><span class="s1">java.util.ArrayList</span><span class="s0">;</span>
+    <span class="s0">import </span><span class="s1">java.util.List</span><span class="s0">;</span>
+    <span class="s0">import </span><span class="s1">java.util.Scanner</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">ContactsApp {</span>
+    <span class="s0">private static </span><span class="s1">List&lt;Contact&gt; contacts = </span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s0">;</span>
+    <span class="s0">private static </span><span class="s1">Scanner scanner = </span><span class="s0">new </span><span class="s1">Scanner(System.in)</span><span class="s0">;</span>
+
+    <span class="s0">public static void </span><span class="s1">main(String[] args) {</span>
+        <span class="s0">boolean </span><span class="s1">running = </span><span class="s0">true;</span>
+
+        <span class="s0">while </span><span class="s1">(running) {</span>
+            <span class="s1">System.out.println(</span><span class="s2">&quot;Options:&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">System.out.println(</span><span class="s2">&quot;1. Add Contact&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">System.out.println(</span><span class="s2">&quot;2. List Contacts&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">System.out.println(</span><span class="s2">&quot;3. Edit Contact&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">System.out.println(</span><span class="s2">&quot;4. Delete Contact&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">System.out.println(</span><span class="s2">&quot;5. Quit&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">System.out.print(</span><span class="s2">&quot;Enter your choice: &quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+            <span class="s0">int </span><span class="s1">choice = scanner.nextInt()</span><span class="s0">;</span>
+            <span class="s1">scanner.nextLine()</span><span class="s0">;</span>
+
+            <span class="s0">switch </span><span class="s1">(choice) {</span>
+                <span class="s0">case </span><span class="s3">1</span><span class="s1">:</span>
+                    <span class="s1">addContact()</span><span class="s0">;</span>
+                    <span class="s0">break;</span>
+                <span class="s0">case </span><span class="s3">2</span><span class="s1">:</span>
+                    <span class="s1">listContacts()</span><span class="s0">;</span>
+                    <span class="s0">break;</span>
+                <span class="s0">case </span><span class="s3">3</span><span class="s1">:</span>
+                    <span class="s1">editContact()</span><span class="s0">;</span>
+                    <span class="s0">break;</span>
+                <span class="s0">case </span><span class="s3">4</span><span class="s1">:</span>
+                    <span class="s1">deleteContact()</span><span class="s0">;</span>
+                    <span class="s0">break;</span>
+                <span class="s0">case </span><span class="s3">5</span><span class="s1">:</span>
+                    <span class="s1">running = </span><span class="s0">false;</span>
+                    <span class="s0">break;</span>
+                <span class="s0">default</span><span class="s1">:</span>
+                    <span class="s1">System.out.println(</span><span class="s2">&quot;Invalid choice. Please enter a valid option.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                    <span class="s0">break;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">private static void </span><span class="s1">addContact() {</span>
+        <span class="s1">System.out.print(</span><span class="s2">&quot;Enter first name: &quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">String firstName = scanner.nextLine()</span><span class="s0">;</span>
+        <span class="s1">System.out.print(</span><span class="s2">&quot;Enter last name: &quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">String lastName = scanner.nextLine()</span><span class="s0">;</span>
+        <span class="s1">System.out.print(</span><span class="s2">&quot;Enter phone number: &quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">String phoneNumber = scanner.nextLine()</span><span class="s0">;</span>
+
+        <span class="s1">Contact contact = </span><span class="s0">new </span><span class="s1">Contact(firstName</span><span class="s0">, </span><span class="s1">lastName</span><span class="s0">, </span><span class="s1">phoneNumber)</span><span class="s0">;</span>
+        <span class="s1">contacts.add(contact)</span><span class="s0">;</span>
+        <span class="s1">System.out.println(</span><span class="s2">&quot;Contact added successfully.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">private static void </span><span class="s1">listContacts() {</span>
+        <span class="s0">if </span><span class="s1">(contacts.isEmpty()) {</span>
+            <span class="s1">System.out.println(</span><span class="s2">&quot;No contacts found.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s1">System.out.println(</span><span class="s2">&quot;Contact list:&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s3">0</span><span class="s0">; </span><span class="s1">i &lt; contacts.size()</span><span class="s0">; </span><span class="s1">i++) {</span>
+                <span class="s1">System.out.println((i + </span><span class="s3">1</span><span class="s1">) + </span><span class="s2">&quot;. &quot; </span><span class="s1">+ contacts.get(i).getFirstName() + </span><span class="s2">&quot; &quot; </span><span class="s1">+ contacts.get(i).getLastName() + </span><span class="s2">&quot;: &quot; </span><span class="s1">+ contacts.get(i).getPhoneNumber())</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s0">private static void </span><span class="s1">editContact() {</span>
+    <span class="s1">}</span>
+
+    <span class="s0">private static void </span><span class="s1">deleteContact() {</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>
